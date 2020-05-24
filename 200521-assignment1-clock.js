@@ -8,7 +8,7 @@ circular wall clock.
 
 const getShorterAngleBetweenHands = (input) => {
     // HELPER FUNCTIONS
-    const getMinsHandLocation = (string) => {
+    const getMinHandLocation = (string) => {
       const minsInput = Number(string.split(':')[1]);
 
       const minsPerRevolution = 60;
@@ -16,14 +16,14 @@ const getShorterAngleBetweenHands = (input) => {
       return minsInput * degsPerMinute;
     }
 
-    const getHrsHandLocation = (string) => {
+    const getHrHandLocation = (string) => {
       const timeInput = string.split(':');
       const [ hrsInput, minsInput ] = timeInput.map(str => Number(str));
       const minsFromZero = (
         hrsInput === 12
           ? 0
           : hrsInput
-        ) * 60 + minsInput;
+      ) * 60 + minsInput;
 
       const minsPerRevolution = 60 * 12;
       const degsPerMinute = 360 / minsPerRevolution;
@@ -32,8 +32,8 @@ const getShorterAngleBetweenHands = (input) => {
 
 
   // MAIN EXECUTE
-  const minsHandLocation = getMinsHandLocation(input);
-  const hrsHandLocation = getHrsHandLocation(input);
+  const minsHandLocation = getMinHandLocation(input);
+  const hrsHandLocation = getHrHandLocation(input);
 
   const directDiff = Math.abs(minsHandLocation - hrsHandLocation);
   const indirectDiff = 360 - directDiff;
@@ -47,17 +47,17 @@ const time3 = '3:01';
 const time4 = '6:30';
 const time5 = '10:15';
 
-// console.log(getMinsHandLocation(time1) === 0);
-// console.log(getMinsHandLocation(time2) === 354);
-// console.log(getMinsHandLocation(time3) === 6);
-// console.log(getMinsHandLocation(time4) === 180);
-// console.log(getMinsHandLocation(time5) === 90);
+// console.log(getMinHandLocation(time1) === 0);
+// console.log(getMinHandLocation(time2) === 354);
+// console.log(getMinHandLocation(time3) === 6);
+// console.log(getMinHandLocation(time4) === 180);
+// console.log(getMinHandLocation(time5) === 90);
 
-// console.log(getHrsHandLocation(time1) === 0);
-// console.log(getHrsHandLocation(time2) === 359.5);
-// console.log(getHrsHandLocation(time3) === 90.5);
-// console.log(getHrsHandLocation(time4) === 195);
-// console.log(getHrsHandLocation(time5) === 307.5);
+// console.log(getHrHandLocation(time1) === 0);
+// console.log(getHrHandLocation(time2) === 359.5);
+// console.log(getHrHandLocation(time3) === 90.5);
+// console.log(getHrHandLocation(time4) === 195);
+// console.log(getHrHandLocation(time5) === 307.5);
 
 console.log(getShorterAngleBetweenHands(time1) === 0);
 console.log(getShorterAngleBetweenHands(time2) === 5.5);
